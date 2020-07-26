@@ -116,11 +116,20 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
         self.retranslateUi(MainWindow)
         self.btnRecords.clicked.connect(self.btn_clk)
-
+        self.pushButton.clicked.connect(self.btnLastRecord)
 
         self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-
+    def btnLastRecord(self):
+        sysList.clear()
+        diasList.clear()
+        pulseList.clear()
+        [slist, dlist, plist, a, b, c] = self.omron()
+        self.lcdNumber.display(a)
+        self.lcdNumber_2.display(b)
+        self.lcdNumber_3.display(c)
+        L = np.arange(1, np.size(slist))
+        slist.pop()
     def btn_clk(self):
         #L = [1, 2, 3, 4, 5,6,7,8]
         slist=dlist=plist=[]
