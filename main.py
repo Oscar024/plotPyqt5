@@ -123,7 +123,10 @@ class Ui_MainWindow(object):
 
     def btn_clk(self):
         #L = [1, 2, 3, 4, 5,6,7,8]
-
+        slist=dlist=plist=[]
+        sysList.clear()
+        diasList.clear()
+        pulseList.clear()
         [ slist, dlist, plist,a,b,c]= self.omron()
 
         L = np.arange(1, np.size(slist))
@@ -150,7 +153,11 @@ class Ui_MainWindow(object):
         return d
 
     def getBPvalues(self,buffer):
+        sistolica = []
+        diastolica = []
+        pulso = []
         for i in range(0, 3):
+
             sistolica = buffer[8 + i * jump] + 25
             diastolica = buffer[7 + i * jump]
             pulso = buffer[10 + i * jump]
@@ -179,7 +186,7 @@ class Ui_MainWindow(object):
     def showDialog2(self):
         msgBox = QMessageBox()
         msgBox.setIcon(QMessageBox.Critical)
-        msgBox.setText("START OMRON")
+        msgBox.setText("START OMRON AGAIN")
         msgBox.setWindowTitle("USB Conncetion error")
         msgBox.setStandardButtons(QMessageBox.Ok)  # | QMessageBox.Cancel)
         # msgBox.buttonClicked.connect(msgButtonClick)
@@ -188,6 +195,7 @@ class Ui_MainWindow(object):
         if returnValue == QMessageBox.Ok:
             print('OK clicked')
     def omron(self):
+        slist = dlist = plist = []
         for d in hid.enumerate():
             keys = list(d.keys())
             keys.sort()
@@ -234,10 +242,16 @@ class Ui_MainWindow(object):
                 if not rc2 == []:
                     [sys, dias, pulse, slist, dlist, plist] = self.getBPvalues(rc2)
                     if sys == 280 and dias == 255 and pulse == 255:
+                        sysList = []
+                        diasList = []
+                        pulseList = []
                         break
                 else:
                     self.showDialog2()
                     print("Closing the device")
+                    sysList = []
+                    diasList = []
+                    pulseList = []
                     h.close()
                     return 0
                     break
@@ -262,6 +276,9 @@ class Ui_MainWindow(object):
                 rc3 = self.readOmron()
 
             print("Closing the device")
+            sysList = []
+            diasList = []
+            pulseList = []
             h.close()
             return[ slist, dlist, plist,slist[last],dlist[last],plist[last]]
 
