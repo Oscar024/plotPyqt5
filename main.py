@@ -11,6 +11,7 @@ from PyQt5.QtWidgets import QMessageBox
 
 import pyqtgraph as pg
 import numpy as np
+
 VENDOR_ID = 0x0590 #
 PRODUCT_ID = 0x0090 #
 
