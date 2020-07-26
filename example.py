@@ -46,7 +46,7 @@ class Ui_MainWindow(object):
         L = [1,2,3,4,5]
         M=  [2,3,4,5,6]
         #pg.plot(L)#this line plots in a new window
-        self.graphicsView.plot(L,M)#this line doesn't work
+        self.graphicsView.plot(L,M)
 
 
 
