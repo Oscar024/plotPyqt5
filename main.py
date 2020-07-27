@@ -148,7 +148,13 @@ class Ui_MainWindow(object):
         # pg.plot(L)#this line plots in a new window
         self.graphicsView.addLegend()
         self.graphicsView.setWindowTitle('Blood Pressure Monitor Last Records')
-        self.graphicsView.plot(L, slist,pen=(255,0,0), symbolBrush=(200,0,0), symbolPen='w', name='Systolic')
+
+        # Add Plot item to show axis labels
+        #plot = self.graphicsView.PlotItem()
+        self.graphicsView.setLabel(axis='left', text='Mesurements')
+        self.graphicsView.setLabel(axis='bottom', text='Records')
+
+        self.graphicsView.plot(L, slist,pen=(255,0,0), symbolBrush=(200,0,0), symbolPen='w', name='Systolic',lables={'left': 'x', 'bottom': 'y'})
         self.graphicsView.plot(L, dlist, pen=(0, 255, 0), symbolBrush=(0, 200, 0), symbolPen='w', name='Diastolic')
         self.graphicsView.plot(L, plist, pen=(0, 0, 255), symbolBrush=(0, 0, 200), symbolPen='w', name='Pulse')
 
