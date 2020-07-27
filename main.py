@@ -119,7 +119,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
         self.retranslateUi(MainWindow)
         #self.graphicsView.setBackground((163,248,236))
-        self.graphicsView.setBackground('w')
+        self.graphicsView.setBackground('k')
         self.btnRecords.clicked.connect(self.btn_clk)
         self.pushButton.clicked.connect(self.btnLastRecord)
 
@@ -163,7 +163,7 @@ class Ui_MainWindow(object):
 
         self.graphicsView.plot(L, slist,pen=(255,0,0), symbolBrush=(200,0,0), symbolPen='k', name='Systolic',lables={'left': 'x', 'bottom': 'y'})
         self.graphicsView.plot(L, dlist, pen=(0, 255, 0), symbolBrush=(0, 200, 0), symbolPen='k', name='Diastolic')
-        self.graphicsView.plot(L, plist, pen=(0, 0, 255), symbolBrush=(0, 0, 200), symbolPen='k', name='Pulse')
+        self.graphicsView.plot(L, plist, pen=(200, 200, 200), symbolBrush=(0, 0, 200), symbolPen='k', name='Pulse')
 
     def buildCRC(self,data):
         crc = 0
