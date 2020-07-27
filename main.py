@@ -8,6 +8,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMessageBox
+import qdarkstyle
 
 import pyqtgraph as pg
 import numpy as np
@@ -34,6 +35,8 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1012, 705)
+        dark_stylesheet = qdarkstyle.load_stylesheet_pyqt5()
+        MainWindow.setStyleSheet(dark_stylesheet)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.tabWidget = QtWidgets.QTabWidget(self.centralwidget)
@@ -207,7 +210,7 @@ class Ui_MainWindow(object):
     def showDialog2(self):
         msgBox = QMessageBox()
         msgBox.setIcon(QMessageBox.Critical)
-        msgBox.setText("START OMRON AGAIN")
+        msgBox.setText("RESTART OMRON")
         msgBox.setWindowTitle("USB Conncetion error")
         msgBox.setStandardButtons(QMessageBox.Ok)  # | QMessageBox.Cancel)
         # msgBox.buttonClicked.connect(msgButtonClick)
