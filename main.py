@@ -149,11 +149,13 @@ class Ui_MainWindow(object):
         print(L)
         print(slist)
         # pg.plot(L)#this line plots in a new window
+        self.graphicsView.clear()
         self.graphicsView.addLegend()
         self.graphicsView.setWindowTitle('Blood Pressure Monitor Last Records')
 
         # Add Plot item to show axis labels
         #plot = self.graphicsView.PlotItem()
+
         self.graphicsView.setLabel(axis='left', text='Mesurements')
         self.graphicsView.setLabel(axis='bottom', text='Records')
 
