@@ -140,11 +140,17 @@ class Ui_MainWindow(object):
 
         L = np.arange(1, np.size(slist))
         slist.pop()
+        dlist.pop()
+        plist.pop()
         print("L")
         print(L)
         print(slist)
         # pg.plot(L)#this line plots in a new window
-        self.graphicsView.plot(L, slist)
+        self.graphicsView.addLegend()
+        self.graphicsView.setWindowTitle('Blood Pressure Monitor Last Records')
+        self.graphicsView.plot(L, slist,pen=(200,0,0), symbolBrush=(255,0,0), symbolPen='w', name='Systolic')
+        self.graphicsView.plot(L, dlist, pen=(0, 200, 0), symbolBrush=(255, 0, 0), symbolPen='w', name='Diastolic')
+        self.graphicsView.plot(L, plist, pen=(0, 0, 255), symbolBrush=(255, 0, 0), symbolPen='w', name='Pulse')
 
     def buildCRC(self,data):
         crc = 0
