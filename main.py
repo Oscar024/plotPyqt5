@@ -118,6 +118,8 @@ class Ui_MainWindow(object):
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
         self.retranslateUi(MainWindow)
+        #self.graphicsView.setBackground((163,248,236))
+        self.graphicsView.setBackground('w')
         self.btnRecords.clicked.connect(self.btn_clk)
         self.pushButton.clicked.connect(self.btnLastRecord)
 
@@ -155,7 +157,7 @@ class Ui_MainWindow(object):
 
         # Add Plot item to show axis labels
         #plot = self.graphicsView.PlotItem()
-
+        #self.graphicsView.setBackground('k')
         self.graphicsView.setLabel(axis='left', text='Mesurements')
         self.graphicsView.setLabel(axis='bottom', text='Records')
 
